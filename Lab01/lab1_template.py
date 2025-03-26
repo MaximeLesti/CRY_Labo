@@ -1,3 +1,5 @@
+# Maxime Lestiboudois
+
 
 # IMPORTANT
 # IL EST PRIMORDIAL DE NE PAS CHANGER LA SIGNATURE DES FONCTIONS
@@ -69,8 +71,8 @@ def caesar_decrypt(text, key):
     clean_text = sanitize_text(text)
 
     result = ""
-    for i in range(0, len(text)):
-        result += addition_lettre_caesar(text[i], -key)
+    for i in range(0, len(clean_text)):
+        result += addition_lettre_caesar(clean_text[i], -key)
 
     return result
 
@@ -305,10 +307,8 @@ def vigenere_improved_break(text, ref_freq, ref_ci):
     -------
         the keyword corresponding to the key used to obtain the ciphertext
     """
-    # TODO you can delete the next lines if needed
     key = ""
     clean_text = sanitize_text(text)
-    #print("clean_text: ", clean_text)
 
     
     vigenere_texts = [""]*20
@@ -431,10 +431,11 @@ def main():
     
     text = recuperer_livre(url)
     E = freq_analysis(text)
-    #Valeur
+    #Valeurs précalculées
     #E = [0.08776375862635759, 0.009701509014589675, 0.032020254307352246, 0.034675933535647435, 0.16859453850060227, 0.010782180331046056, 0.009604604322194609, 0.00986342571580675, 0.07700979105385693, 0.004837874769698026, 0.0013394927100685201, 0.05513509004776543, 0.026820520243267577, 0.07132921345282459, 0.05452422249317374, 0.02765586322454657, 0.010021662491996163, 0.0682417563546172, 0.07736429049818826, 0.07538326419163087, 0.058736510008169436, 0.017778944450305065, 0.0017038052878069363, 0.004181621473098521, 0.003097270231614481, 0.0018326026637750634]
-    F = coincidence_index(text)
     #F = 2.015474795510163
+
+    F = coincidence_index(text)
 
     #################################
     ##########Tester CAESAR##########
