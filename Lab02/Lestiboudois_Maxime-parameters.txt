@@ -1,0 +1,16 @@
+# Dans tout ce qui suit, les guillemets/apostrophes ne font pas partie des chaines de characteres. 
+Nom_Prenom="Lestiboudois_Maxime"
+###### Spongy AES
+19
+hash = b'ZeSuX70wt/Ym0Bwa3BSq9qHjVpAxEFhrtlXAFpdjK2igvgztDfgGrSFzCr8rZ10hmnY4OvB4669oXEgClmr/KA=='
+###### GCM
+m1       = b'This is a Test !'
+iv1      = b'XCxpa/Kra6qi78G/'
+c1       = b'qVn/hjPI/voP3q2T5Jjrug=='
+t1       = b'cyVkbTE867/u/+ifbqolFg=='
+iv2      = b'XCxpa/Kra6qi78G/'
+c2       = b'rVDlhjOcrbcLk5aE/pau6A=='
+t2       = b'aFH9iMJiXDNYKvrn19+c5w=='
+mChall   = b'100.00CHF to ADC'
+###### Speck
+#Le fichier se trouve dans le fichier annexe Lestiboudois_Maxime-speck.txt
