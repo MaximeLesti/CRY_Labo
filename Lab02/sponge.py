@@ -34,37 +34,72 @@ def sponge(rate, message, output_size):
 
 
 def sponge_break(hash):
-    b1_onConnait = b"{"+b"0x80"+b"0x00"*10
+
+    #state_init : state initial
+    #state_1 : state après le xor entre le state_init et le premier bloc
+    #state_2 state après avoir passé state_1 dans AES
+    #state_3 state après le xor du state_2 et le second bloc
     state_init = b"0x00"*16
 
     hash_binaire = base64.b64decode(hash)
     outputsize = len(hash_binaire)
-    zblocks = [hash_binaire[rate*i:rate*(i+1)] for i in range(outputsize//rate-1, -1, -1)]
+    zblocks = [hash_binaire[rate*i:rate*(i+1)] for i in range(outputsize//rate)]
+    #print(zblocks[1])
 
     test_block= b"\x00"*16
-    blockPlusUn = 1
-    for b in zblocks:
-        c = 0
-        test_block  = b + c.to_bytes(1, byteorder='big')
-        test_block = cipher.decrypt(test_block)
-        while(test_block[:rate] != zblocks[blockPlusUn]):
-            c+=1
-            test_block  = b + c.to_bytes(1, byteorder='big')
-            test_block = cipher.decrypt(test_block)
-        blockPlusUn += 1
+    state_init = b"\x00"*16
+    #c = 32
+    #test_block  = zblocks[0] + c.to_bytes(1, byteorder='big')
+    #test_block = permutation(test_block)
+    #while(test_block[:rate] != zblocks[1] and c < 127):
+    #    c+=1
+    #    test_block  = zblocks[0] + c.to_bytes(1, byteorder='big')
+    #    test_block = permutation(test_block)
+    c = 0  # Début du bruteforce pour les caractères ASCII imprimables
 
-        b0= b"\x46"+b"\x4C"+ b"\x41"+b"\x47"+b"\x7B" + b"\x00"*10
-        b1 = b"\x00"*3 + b"\x7D" + b"\x80"+b"\x00"*10
-        state_1 = strxor(state_init[:rate], b0)+ state_init[rate:]
-        state_2 = strxor(test_block[:rate], b1) + test_block[rate:]
-        state_2_bis = cipher.encrypt(state_1) 
-        while (state_2_bis[4:]!= state_2[4:]):
-            b0 = b0[:-1] + bytes([b0[-1] + 1])
-            state_1 = strxor(state_init[:rate], b0)+ state_init[rate:]
-            state_2_bis = cipher.encrypt(state_1) 
+    # Bruteforce du premier bloc du hachage
+    #for i in zblocks:
+       #   print(i)
+    while test_block[:rate] != zblocks[1]:
+        test_block = zblocks[0] + c.to_bytes(1, byteorder='big')
+        test_block = permutation(test_block)
+        c += 1
+    state_3 = cipher.decrypt(test_block)
+    state_3 = cipher.decrypt(state_3)
+    print(state_3)
+    b0= b"FLAG{" + b"\x00"*10 # equivalent à "FLAG{0000000000"
+    b1_end = b"}" + b"\x80"+b"\x00"*10  # equivalent à "}800000000000"
+    b1 = b"\x00"*15
+    state_1 = strxor(state_init[:15], b0)+ state_init[15:]
 
-        print(b0)
-        state_1 = strxor(state_init[:rate], b0)+ state_init[rate:]
+    for x1 in range(32, 127):
+        for x2 in range(32, 127):
+            for x3 in range(32, 127):
+                x1x2x3 = x1.to_bytes(1, byteorder='big') + x2.to_bytes(1, byteorder='big') + x3.to_bytes(1, byteorder='big')
+                b1 = x1x2x3 + b1_end
+                state_2 = strxor(state_3[:rate], b1) + state_3[rate:]
+                state_1_pot = cipher.decrypt(state_2)
+                if(state_1_pot[:5] == state_1[:5]): # and state_1_pot[rate:] == state_1[rate:]):
+                    print("YEAH")
+                    break
+            if(state_1_pot[:5] == state_1[:5]): # and state_1_pot[rate:] == state_1[rate:]):
+                    break
+        if(state_1_pot[:5]== state_1[:5]): # and state_1_pot[15:] == state_1[rate:]):
+                    break
+    state_2 = strxor(state_3[:15], b1)+ state_3[rate:]
+    state_1 = cipher.decrypt(state_2)
+
+    b0 = strxor(state_init[:rate], state_1[:rate])
+
+    print(b0)
+    print(b1)
+
+
+
+
+
+
+        
 
 
 
