@@ -139,7 +139,13 @@ def break_GCM_with_identique_IV(m1, iv, c1, t1, c2, t2):
     for i in range(len(m1)//BLOCK_SIZE):
         Ek = xor(m1[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)], c1_binaire[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)])
         plaintext.append(xor(c2[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)], Ek))
+    
+    
     return b"".join(plaintext)
+
+def break_GCM(m1, t1, c1, iv):
+    
+    return
 
 test_GCM()
 m1 = b'This is a Test !'
@@ -148,5 +154,6 @@ c1_binaire = base64.b64decode(b'qVn/hjPI/voP3q2T5Jjrug==')
 t1_binaire = base64.b64decode(b'cyVkbTE867/u/+ifbqolFg==')
 c2_binaire = base64.b64decode(b'rVDlhjOcrbcLk5aE/pau6A==')
 t2_binaire = base64.b64decode(b'aFH9iMJiXDNYKvrn19+c5w==')
+mChall = base64.b64decode(b'100.00CHF to ADC')
 
 print(break_GCM_with_identique_IV(m1, iv_binaire, c1_binaire, t1_binaire, c2_binaire, t2_binaire))
