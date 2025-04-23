@@ -4,7 +4,7 @@ Lestiboudois Maxime
 
 ## Spongy AES
 Schéma de la construction de spongy.py:
- ![image](image.png)
+![sponge schéma](image-1.png)
 
 Pour retrouver le message, j'ai retrouvé le dernier state avant la composition du Tag. Pour cela, j'ai procédé comme suit:
 - 
