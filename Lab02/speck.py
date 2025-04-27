@@ -5,6 +5,8 @@ import secrets
 import sys
 import string
 ra = secrets.SystemRandom()
+import base64
+import itertools
 
 def xor(a,b):
     return strxor.strxor(a,b)
@@ -131,6 +133,34 @@ class SPECK:
         return b"".join(ret)
 
 
+def break_Speck(data):
+    blocs = [data[i:i + 4] for i in range(0, len(data), 4)]
+
+    index_map = {}
+    for idx, bloc in enumerate(blocs):
+        index_map.setdefault(bloc, []).append(idx)
+
+    pairs = [
+    (i, j)
+    for idxs in index_map.values() if len(idxs) > 1
+    for i, j in itertools.combinations(idxs, 2)
+    if (i ^ j) & 1                                  
+    ]
+
+    mdp = [0]*len(pairs)
+    a=0
+    for i, j in pairs:
+        print(f"Bloc identique aux indices {i} (parité {i%2}) et {j} (parité {j%2})")
+        mdp[a] = xor(blocs[i-1], blocs[j-1])
+        a+=1
+    print(mdp)
+    if all(x == mdp[0] for x in mdp):
+        message = mdp[0]
+    else:
+        message = "mot de passe non trouvable"
+    return message
+
+
 
 if __name__ == '__main__':
     #code de la tour radio
@@ -142,5 +172,11 @@ if __name__ == '__main__':
     password = ''.join(secrets.choice(alphabet) for i in range(4))
     pt = (b"\x00\x00\x00\x00" + password.encode("UTF-8"))*(repetitions)
     ct = my_speck.encryptCBC(pt, iv)
-    print(ct)
-        
+    #print(ct)
+    
+    #déchiffrement
+    f = open("Lestiboudois_Maxime-speck.txt", "r")
+    ct = f.read()
+    ct_bytes = base64.b64decode(ct)
+
+    print(break_Speck(ct_bytes))

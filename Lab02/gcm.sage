@@ -140,12 +140,20 @@ def break_GCM_with_identique_IV(m1, iv, c1, t1, c2, t2):
         Ek = xor(m1[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)], c1_binaire[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)])
         plaintext.append(xor(c2[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)], Ek))
     
-    
+
+
     return b"".join(plaintext)
 
-def break_GCM(m1, t1, c1, iv):
+def break_GCM_integrity(m1, t1, c1, iv, mChall):
+    if len(m1)%BLOCK_SIZE != 0 or len(c1)%BLOCK_SIZE != 0 or len(m1) < len(mChall):
+        raise Exception("ERROR: problem of text size")
+    ciphertext = []
+    for i in range(len(mChall)//BLOCK_SIZE):
+        Ek = xor(m1[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)], c1_binaire[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)])
+        ciphertext.append(xor(mChall[BLOCK_SIZE*i: BLOCK_SIZE*(i+1)], Ek))
     
-    return
+
+    return base64.b64encode(b"".join(ciphertext))
 
 test_GCM()
 m1 = b'This is a Test !'
@@ -154,6 +162,8 @@ c1_binaire = base64.b64decode(b'qVn/hjPI/voP3q2T5Jjrug==')
 t1_binaire = base64.b64decode(b'cyVkbTE867/u/+ifbqolFg==')
 c2_binaire = base64.b64decode(b'rVDlhjOcrbcLk5aE/pau6A==')
 t2_binaire = base64.b64decode(b'aFH9iMJiXDNYKvrn19+c5w==')
-mChall = base64.b64decode(b'100.00CHF to ADC')
+mChall = b'100.00CHF to ADC'
 
 print(break_GCM_with_identique_IV(m1, iv_binaire, c1_binaire, t1_binaire, c2_binaire, t2_binaire))
+
+print(break_GCM_integrity(m1, t1_binaire, c1_binaire, iv_binaire, mChall))

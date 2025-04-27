@@ -48,18 +48,9 @@ def sponge_break(hash):
 
     test_block= b"\x00"*16
     state_init = b"\x00"*16
-    #c = 32
-    #test_block  = zblocks[0] + c.to_bytes(1, byteorder='big')
-    #test_block = permutation(test_block)
-    #while(test_block[:rate] != zblocks[1] and c < 127):
-    #    c+=1
-    #    test_block  = zblocks[0] + c.to_bytes(1, byteorder='big')
-    #    test_block = permutation(test_block)
+
     c = 0  # Début du bruteforce pour les caractères ASCII imprimables
 
-    # Bruteforce du premier bloc du hachage
-    #for i in zblocks:
-       #   print(i)
     while test_block[:rate] != zblocks[1]:
         test_block = zblocks[0] + c.to_bytes(1, byteorder='big')
         test_block = permutation(test_block)
@@ -80,7 +71,6 @@ def sponge_break(hash):
                 state_2 = strxor(state_3[:rate], b1) + state_3[rate:]
                 state_1_pot = cipher.decrypt(state_2)
                 if(state_1_pot[:5] == state_1[:5]): # and state_1_pot[rate:] == state_1[rate:]):
-                    print("YEAH")
                     break
             if(state_1_pot[:5] == state_1[:5]): # and state_1_pot[rate:] == state_1[rate:]):
                     break
