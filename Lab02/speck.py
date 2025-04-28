@@ -136,24 +136,22 @@ class SPECK:
 def break_Speck(data):
     blocs = [data[i:i + 4] for i in range(0, len(data), 4)]
 
-    index_map = {}
-    for idx, bloc in enumerate(blocs):
-        index_map.setdefault(bloc, []).append(idx)
+    list_index = {}
+    for indice, bloc in enumerate(blocs):
+        list_index.setdefault(bloc, []).append(indice)
 
     pairs = [
     (i, j)
-    for idxs in index_map.values() if len(idxs) > 1
-    for i, j in itertools.combinations(idxs, 2)
+    for indices in list_index.values() if len(indices) > 1
+    for i, j in itertools.combinations(indices, 2)
     if (i ^ j) & 1                                  
     ]
 
     mdp = [0]*len(pairs)
     a=0
     for i, j in pairs:
-        print(f"Bloc identique aux indices {i} (parité {i%2}) et {j} (parité {j%2})")
         mdp[a] = xor(blocs[i-1], blocs[j-1])
         a+=1
-    print(mdp)
     if all(x == mdp[0] for x in mdp):
         message = mdp[0]
     else:
