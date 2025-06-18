@@ -1,0 +1,80 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            6c:b3:be:16:a8:6b:92:55:ba:63:38:8c:55:59:89:dc:7d:87:1c:2b
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=CH, O=HEIG-VD, CN=HEIG-VDRoot
+        Validity
+            Not Before: May 22 10:41:08 2025 GMT
+            Not After : Dec 31 23:59:59 2030 GMT
+        Subject: C=CH, O=HEIG-VD, CN=HEIG-VDRoot
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:c2:3c:b5:ff:94:79:e3:4c:01:27:87:1a:92:ae:
+                    2a:0a:85:b6:23:27:82:0b:80:95:ef:b8:d3:0a:fc:
+                    5d:e4:a5:e3:6d:1d:01:3f:c6:cb:88:b2:37:9d:da:
+                    72:fc:8a:d4:44:73:a1:e9:a5:4c:1e:a2:21:ba:fe:
+                    ba:8c:2e:59:f9:93:eb:e2:bd:18:c5:2b:e3:2e:6d:
+                    ff:3d:bd:6c:15:27:b3:2b:3f:89:33:6d:84:dd:34:
+                    15:e7:11:37:ce:e3:75:38:47:1b:14:e4:07:fb:11:
+                    1c:c8:2d:22:90:1d:99:3a:b6:dc:be:83:c2:14:2a:
+                    99:b8:56:36:72:f0:98:6b:6f:0e:bd:b2:9a:b6:94:
+                    4f:65:09:a1:73:14:ec:bc:17:c9:e2:82:20:d4:fb:
+                    94:20:72:d5:75:ee:02:21:23:f3:99:ad:53:d8:09:
+                    5f:63:dd:4c:59:bb:de:7f:c1:4a:ad:4d:fe:d2:28:
+                    37:72:8e:e3:90:ec:28:ff:5e:96:44:21:0e:5c:e8:
+                    7e:dd:ba:de:33:e2:99:0f:41:3b:7d:81:88:ca:ac:
+                    5d:00:cf:aa:b9:fd:15:15:02:74:2c:9e:0c:5e:2d:
+                    3d:8d:6c:7e:9a:e2:e2:b4:3e:db:4e:c0:84:c8:e3:
+                    af:25:49:40:18:2a:a4:28:34:7e:da:b7:db:a6:7a:
+                    a6:f9
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Certificate Sign, CRL Sign
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+            X509v3 Subject Key Identifier: 
+                B0:0B:BF:2D:D3:44:1C:8B:B0:AD:85:52:A5:15:25:13:0D:B9:D6:70
+            X509v3 Authority Key Identifier: 
+                B0:0B:BF:2D:D3:44:1C:8B:B0:AD:85:52:A5:15:25:13:0D:B9:D6:70
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        b7:03:b7:9b:67:f8:dd:64:51:54:ab:db:c1:e1:09:41:f5:31:
+        aa:3c:08:04:be:6b:5b:b5:63:57:2d:57:3e:48:51:d7:9b:8c:
+        51:5b:65:27:30:5c:72:09:fc:be:40:56:be:d0:9a:1c:79:50:
+        f3:69:28:d6:c6:e3:2b:83:da:d1:ae:ef:71:22:66:28:2f:79:
+        e9:ac:e0:f2:4b:db:57:7b:2f:0a:98:19:36:17:f2:3b:6a:74:
+        c0:b7:85:29:30:ea:95:ab:f6:a4:a4:77:67:df:f2:7e:c0:0e:
+        cc:b2:cc:21:64:5e:13:e2:1b:d1:3a:50:c4:79:52:47:fc:8f:
+        ca:b4:f6:51:f1:b5:e3:ed:24:c4:12:d1:ab:4a:74:88:9a:97:
+        c0:58:bc:62:07:7e:fe:7f:60:bb:c4:cf:b7:68:b1:c9:99:f8:
+        f2:af:7e:4f:f4:b3:32:24:e6:b0:6a:8e:59:07:85:98:ea:8d:
+        e3:da:be:be:7d:c2:63:d7:bd:a3:e0:7b:05:8d:33:af:9e:02:
+        50:d0:09:b5:2a:d8:df:54:fd:0d:49:09:a8:d8:7c:d4:29:56:
+        e2:b1:6f:8f:31:e9:bf:a6:d1:02:30:22:b8:78:57:34:77:81:
+        c7:b2:57:e4:9a:16:33:d2:fc:4f:0e:47:d7:e0:0c:c4:5f:14:
+        0f:4b:6d:c5
+-----BEGIN CERTIFICATE-----
+MIIDWzCCAkOgAwIBAgIUbLO+FqhrklW6YziMVVmJ3H2HHCswDQYJKoZIhvcNAQEL
+BQAwNTELMAkGA1UEBhMCQ0gxEDAOBgNVBAoMB0hFSUctVkQxFDASBgNVBAMMC0hF
+SUctVkRSb290MB4XDTI1MDUyMjEwNDEwOFoXDTMwMTIzMTIzNTk1OVowNTELMAkG
+A1UEBhMCQ0gxEDAOBgNVBAoMB0hFSUctVkQxFDASBgNVBAMMC0hFSUctVkRSb290
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwjy1/5R540wBJ4cakq4q
+CoW2IyeCC4CV77jTCvxd5KXjbR0BP8bLiLI3ndpy/IrURHOh6aVMHqIhuv66jC5Z
++ZPr4r0YxSvjLm3/Pb1sFSezKz+JM22E3TQV5xE3zuN1OEcbFOQH+xEcyC0ikB2Z
+OrbcvoPCFCqZuFY2cvCYa28OvbKatpRPZQmhcxTsvBfJ4oIg1PuUIHLVde4CISPz
+ma1T2AlfY91MWbvef8FKrU3+0ig3co7jkOwo/16WRCEOXOh+3breM+KZD0E7fYGI
+yqxdAM+quf0VFQJ0LJ4MXi09jWx+muLitD7bTsCEyOOvJUlAGCqkKDR+2rfbpnqm
++QIDAQABo2MwYTAOBgNVHQ8BAf8EBAMCAQYwDwYDVR0TAQH/BAUwAwEB/zAdBgNV
+HQ4EFgQUsAu/LdNEHIuwrYVSpRUlEw251nAwHwYDVR0jBBgwFoAUsAu/LdNEHIuw
+rYVSpRUlEw251nAwDQYJKoZIhvcNAQELBQADggEBALcDt5tn+N1kUVSr28HhCUH1
+Mao8CAS+a1u1Y1ctVz5IUdebjFFbZScwXHIJ/L5AVr7Qmhx5UPNpKNbG4yuD2tGu
+73EiZigveems4PJL21d7LwqYGTYX8jtqdMC3hSkw6pWr9qSkd2ff8n7ADsyyzCFk
+XhPiG9E6UMR5Ukf8j8q09lHxtePtJMQS0atKdIial8BYvGIHfv5/YLvEz7doscmZ
++PKvfk/0szIk5rBqjlkHhZjqjePavr59wmPXvaPgewWNM6+eAlDQCbUq2N9U/Q1J
+CajYfNQpVuKxb48x6b+m0QIwIrh4VzR3gceyV+SaFjPS/E8OR9fgDMRfFA9LbcU=
+-----END CERTIFICATE-----
